@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:tiles="http://tiles.apache.org/tags-tiles"
+     xmlns:spring="http://www.springframework.org/tags"
+     id="ctr" class="ctr_cls">
+
+    <jsp:output omit-xml-declaration="true" />
+
+    <div id="ctn">
+        <div style= "text-align: left; margin: 15px 218px 0px 230px; text-align: justify;">
+            <tiles:insertAttribute name="content" ignore="true" />
+        </div>
+    </div>
+
+    <tiles:insertAttribute name="left_panel" ignore="false" />
+
+    <tiles:insertAttribute name="right_panel" ignore="false" />
+
+</div>

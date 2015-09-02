@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--PLEASE DO NOT MODIFY THIS FILE AND BE AWARE THAT THE FILE CONTAINS CONFIDENTIAL INFORMATION.-->
+<ChemAxon>
+<License>
+<Field Name="Software" Value="Marvin Applets"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MCwCFCxhnVaff72xo4JBc5Wj9ocIBqlaAhRba2NcGZ1wdsjy51J4Bv4bEwGswA=="/>
+</License>
+<License>
+<Field Name="Software" Value="Marvin Beans"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MCwCFG4T8OxE+SNL31eS4qUSRa/Z9PLwAhQQPXPNc0FniWoYbZTnpQ3tNl4B3Q=="/>
+</License>
+<License>
+<Field Name="Software" Value="Instant JChem"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="B/S/P/E" Value="Standard"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MCwCFCh+hqOubQEPSsSukFTDCRMUgEfhAhQr3/ACFe5Voz9ZO9+qmuV5xXF1EQ=="/>
+</License>
+<License>
+<Field Name="Software" Value="JChem Base"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Restriction Name="Search/Min" Value="Unlimited"/>
+<Signature Value="MCwCFG9nHtaH2jSW0WwcswbLTrf3CITnAhRIYKMdsE4QtT0qZUCXIDCBIfpqxQ=="/>
+</License>
+<License>
+<Field Name="Software" Value="JChem Cartridge"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MCwCFA4LlxnBu4GLYA9g0cTzxScMz5EOAhQHJr8MOP7cCKvAznOemh7xSYM98Q=="/>
+</License>
+<License>
+<Field Name="Software" Value="Standardizer"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="B/S/P/E" Value="Standard"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MC0CFCImvDJTQRtstImPAX4c+xmaJJTMAhUAiN3FZ/4NfOzpu1V5sGxNt+WB4mg="/>
+</License>
+<License>
+<Field Name="Software" Value="Screen"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MCwCFFX3x172DGqGaHjrsVwD45WtaS57AhR/2xK1hNQ+OVuOvBryHuiyI0CEnA=="/>
+</License>
+<License>
+<Field Name="Software" Value="Reactor"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MC0CFHBblFpsW3cRwbmFKxuVPOV5/e9sAhUAijZwnqW/uKVXtEN6aBlDxVDxJO0="/>
+</License>
+<License>
+<Field Name="Software" Value="Fragmenter"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MC0CFQCEzgu9E89FcV6sqlbNlhk7pOuabQIUV+yCrhX8J09WeWRWPxt83QgxU9Y="/>
+</License>
+<License>
+<Field Name="Software" Value="JKlustor"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="B/S/P/E" Value="Standard"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MCwCFFIBJpfOQE0BeIJgDcVPzzSkTte3AhRFxmCHYumVOyi5uWpX+CW/VeQ5oQ=="/>
+</License>
+<License>
+<Field Name="Software" Value="Metabolizer"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MCwCFFu5a3j4xwHEfEbYJpD5BTTuy7T7AhQV6vcprqsuLuTIlu1hBQspT9qANA=="/>
+</License>
+<License>
+<Field Name="Software" Value="Markush Search"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MC0CFQCMLsos3rQuGe1LlsDH/wcmiHammwIUI4/j7BxBYxGI8DoWWpk0lLf/Sz8="/>
+</License>
+<License>
+<Field Name="Software" Value="Protonation Plugin Group"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MCwCFAcb38mcuPAs+0SNRnal1mAtSCj5AhRyz2qtM7eH3PLrTAPZQ4Vu/pLGjA=="/>
+</License>
+<License>
+<Field Name="Software" Value="Partitioning Plugin Group"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MCwCFAhBodPUetH/HLs1I1xxqwxZoi34AhRrJq5oeWu0ADgwh5DN55jg4sZABQ=="/>
+</License>
+<License>
+<Field Name="Software" Value="Charge Plugin Group"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MC0CFAG6KMJGTv8i3qUh2xF2MT284Ou8AhUAiCv05Qu+wFkW/+2OkaHHaxHNhdo="/>
+</License>
+<License>
+<Field Name="Software" Value="Isomers Plugin Group"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MCwCFGxYfDpfOiA+K2pJaXcllOUrq8CxAhQTEyYrXSbXVATQ33Dx8PrJ0HCAdg=="/>
+</License>
+<License>
+<Field Name="Software" Value="Conformation Plugin Group"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MCwCFGAEytvHlSAGJOSxqgkqOevqAQnAAhRD+VbYlfKifxficJbWM+Hjhe0Amg=="/>
+</License>
+<License>
+<Field Name="Software" Value="Geometry Plugin Group"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MC0CFBRj8dYPB8UUWWkudA8jQNb7v/VQAhUAlitNas3u6oInr9KgDE1AOfPb9Zc="/>
+</License>
+<License>
+<Field Name="Software" Value="Huckel Analysis Plugin"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MCwCFEutJ15XjCAoahYESzOrvGI3iT5VAhQYa60azyiUGvvD1M0VaY1/YHmJUw=="/>
+</License>
+<License>
+<Field Name="Software" Value="Refractivity Plugin"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MC0CFAeRJPVUZyaooRnj/wn8SrjByhxEAhUAjioRAWJdnZulVnwetD24UsxbVWw="/>
+</License>
+<License>
+<Field Name="Software" Value="HBDA Plugin"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MC0CFQCNdQFycwk9330OeBuqyVGu0c4vzgIUeCJulM6Cv/DPxq2kSHwvMmp6x3I="/>
+</License>
+<License>
+<Field Name="Software" Value="Markush Enumeration Plugin"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MC0CFQCWD8uFyj40A415SuMEtrYRaI3nygIUAmf7v/EimNNBatwAfjudwwTqYCg="/>
+</License>
+<License>
+<Field Name="Software" Value="Structure to Name Plugin"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MCwCFHolvE6y/7O/pL7V81nGQVlO+QKQAhQI0kTEH085l0znmn3B892YgXfptA=="/>
+</License>
+<License>
+<Field Name="Software" Value="Name to Structure"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MCwCFFlUtrCpmzkS6sq5c6gRkm1uFkI9AhRbPHlDX+SGxPe01TGB7NAOUcS+jg=="/>
+</License>
+<License>
+<Field Name="Software" Value="JChem for Excel"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MCwCFHr1GKr+uGGxvHhJYcbJpAKC/kedAhQIzKPihwIVH7KsBYDP3jeBIgyedQ=="/>
+</License>
+<License>
+<Field Name="Software" Value="Structure Search"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MC0CFHxxw/1o858d5Pab7CM2QHEtplKxAhUAj4PV6Yn2j3YeDb3HAwEGtWjdEEQ="/>
+</License>
+<License>
+<Field Name="Software" Value="IUPAC naming plugin"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MC0CFGZMEfmDrCJd7B4uz9XYB06/n0jcAhUAgujB+SKQKEokjd6k/U26uzkCr6Q="/>
+</License>
+<License>
+<Field Name="Software" Value="Calculations Pack"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MCwCFH7Vkylz9YD2vqhfvpcMqwDQRBfqAhR5qbHE5vDSjOd2XoHfJvdjWS9oWw=="/>
+</License>
+<License>
+<Field Name="Software" Value="Web Services Server"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MCwCFE3HPpyyTG0AoumipLeb7yXL7rHfAhQb78tSpHul8AEqbmMiBRH0wVxVsQ=="/>
+</License>
+<License>
+<Field Name="Software" Value="Structural Frameworks Plugin"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MCwCFBuDpsBJfdUTsNRV7WKUA2QbcqpoAhQJQvvmY1isNrTa013KQAxhd2HyIA=="/>
+</License>
+<License>
+<Field Name="Software" Value="Structure Checker"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MC0CFEr3LEfAuCd8zFBpXXyhhS0GIyQUAhUAgGP+xmjVOwwCB49kpJ5mAXwWyn0="/>
+</License>
+<License>
+<Field Name="Software" Value="Predictor Plugin"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MCwCFE02+aiSNTf7s45qaPolVNBNk2HCAhRPmNkCzzLj3XCLBHXtpJodcVOwcg=="/>
+</License>
+<License>
+<Field Name="Software" Value="MCES"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MC0CFH72jRD1XjfK7VIMYOoOXQZKnxUJAhUAgSvMxK6Gqu6rUNCj9DlPN0CM0P0="/>
+</License>
+<License>
+<Field Name="Software" Value="3D Alignment"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MCwCFADm58ij3JBx7xpEvdlExSvSSyzuAhQF91h/SiTCCDljLJvoQi9ANZfVIw=="/>
+</License>
+<License>
+<Field Name="Software" Value="3D Screen"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MCwCFGAloEX6fIFg4/eu4HG1cTvS/s7sAhQQizjkptOo4DG1SYjFxkFHvhWJqg=="/>
+</License>
+<License>
+<Field Name="Software" Value="Molecular Descriptors"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MCwCFE7FngeICwmlObRVkDnEb9RjgFNqAhRSYiQ+Tpo/6XJ1dmBHgPGaF6/xVQ=="/>
+</License>
+<License>
+<Field Name="Software" Value="Instant JChem VIZ"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MCwCFBOX5CGtUXUxOB3O6eWnZPErL+ueAhRlDY9EKVJbLeqeNdIVHWCpv30dHQ=="/>
+</License>
+<License>
+<Field Name="Software" Value="ECFP/FCFP"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MCwCFEo4QQCcrD5kCaYq+pxmRxiy1f14AhQbsboYx42unWvny9ekKdvz/yMb7A=="/>
+</License>
+<License>
+<Field Name="Software" Value="Document to Structure"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MC0CFQCVImtplOjdqGIQKeGAbGB4pVYmJAIUU6f8Cznl/x8cZJV7D5jmxVy58Ic="/>
+</License>
+<License>
+<Field Name="Software" Value="NMR Predictor"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MCwCFD1ZL3q9IpxZRoSqGNz3LXVC//p6AhR3sl3WCXGtw0VXz5d6nH/PIIRrgg=="/>
+</License>
+<License>
+<Field Name="Software" Value="JChem for Office"/>
+<Field Name="License Term" Value="Academic Research"/>
+<Field Name="Licensee" Value="University of Missouri-Kansas City"/>
+<Field Name="Number of Users" Value="1"/>
+<Field Name="Expiration Date" Value="2014-06-25"/>
+<Field Name="Support Expiration Date" Value="2014-06-25"/>
+<Field Name="Comment" Value="academic research license"/>
+<Restriction Name="Server Use" Value="Not Allowed"/>
+<Signature Value="MCwCFEmoeZW6mDTGGYkl+/q2oGpxlA/ZAhR9/2IwlCITcb4QTzJtp7ZDlxIhag=="/>
+</License>
+</ChemAxon>

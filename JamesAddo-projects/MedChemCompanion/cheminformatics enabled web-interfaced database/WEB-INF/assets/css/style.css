@@ -1,0 +1,110 @@
+body
+{
+	margin: 0px;
+}
+
+.ctr_cls
+{
+	margin: auto;
+	
+	text-align: center;
+}
+
+#ctr
+{
+	width: 1003px;
+	height: 828px;
+}
+
+#ftr
+{
+	clear: both;
+	
+	width: 100%;
+	height: 70px;
+	
+	background-image: url(../images/copyright_bg.jpg);
+}
+
+#ctn
+{
+	float: left;
+	
+	width: 100%;
+	height: auto;
+	
+	padding: 0 -218px 0 -230px;
+}
+
+#ctn p
+{
+	margin-right: 7px;
+}
+
+.greetingContent
+{
+	FONT-SIZE: 11px;
+	COLOR: #434445;
+	LINE-HEIGHT: 1.4em;
+	FONT-FAMILY: Arial;
+}
+
+#lpnl
+{
+	float: left;
+	
+	position: relative;
+	margin-left: -100%;
+	
+	width: 230px;
+	height: 100%;
+	
+	background-image: url(../images/nav_shadow_bg.png);
+	background-repeat: repeat-y;
+}
+
+#rpnl
+{
+	float: left;
+	
+	position: relative;
+	margin-left: -218px;
+	
+	width: 218px;
+	height: 100%;
+	
+	background: #fcc;
+}
+
+#navl
+{
+	padding: 0px;
+	
+	margin: 15px 10px 0 10px;
+	
+	list-style-type: none;
+}
+
+#navl li
+{
+	text-align: left;
+	
+	padding-left: 1em;
+	
+	height: 28px;
+	
+	background-position: 0.4em;
+	background-image: url(../images/nav_bg.jpg);
+	background-repeat: repeat-x;
+}
+
+#navl a
+{
+	vertical-align: middle;
+	
+	text-decoration: none;
+	
+	font-family: Arial;
+	font-size: 12px;
+	color: #2F2F2F;
+}

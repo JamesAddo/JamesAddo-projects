@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<div id="hdr" class="ctr_cls"
+     xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:tiles="http://tiles.apache.org/tags-tiles"
+     xmlns:spring="http://www.springframework.org/tags">
+
+    <jsp:output omit-xml-declaration="true" />
+
+    <spring:url value="/resources/images/header/advancedbiomedical_header.jpg" var="header_image_url" />
+
+    <a href="index.html">
+        <img alt="header image" src="${header_image_url}" />
+    </a>
+
+</div>

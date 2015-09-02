@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source source="LOCAL" name="src:main:webapp:WEB-INF:spring:hibernate.cfg.xml" uuid="f6392beb-7f4f-4f42-9dff-cc6b3872c1d6">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+</component>

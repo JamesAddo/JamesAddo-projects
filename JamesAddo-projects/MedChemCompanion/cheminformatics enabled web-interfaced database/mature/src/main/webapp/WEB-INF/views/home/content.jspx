@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:spring="http://www.springframework.org/tags"
+     xmlns:form="http://www.springframework.org/tags/form">
+
+    <jsp:output omit-xml-declaration="true" />
+
+    <spring:url value="/resources/styles/home/style.css" var="style_url" />
+
+    <link href="${style_url}" rel="stylesheet" type="text/css" />
+
+    <p style="font: bold 18px Arial; color: #000061">
+        Welcome to AMPBAC Database
+    </p>
+
+    <p class="greetingContent" style="font: bold 13px Arial;">
+        What is AMPBAC Database?
+    </p>
+
+    <p class="greetingContent">
+        AMPBAC Database is an informative database of African Medicinal Plants and their constituents
+        serving as a resource for drug discovery chemistry from African medicinal plants and which supports
+        Advanced Biomedical Laboratories ability to maintain and deliver physical availability of the extracts
+        and/or their purified constituents. Advanced Biomedical Laboratories.maintains and offers plant solvent
+        extract stocks (aqueous, organic and aqueous-organic extracts) of medicinal value from the African Region
+        to researchers in academia, pharmaceutical companies, research institutes developing drugs or involved in
+        screening assays from natural product sources. Locate medicinal plants and constituents from the African
+        Region using our unique African Medicinal Plants and Bioactive Constituents Database (AMPBAC Database).
+    </p>
+
+    <p class="greetingContent">
+        The database presently includes collections Ghana, Madagascar and South Africa. The database presently
+        includes over 5,000 records of medicinal plants and > 500 bioactive constituents. The database contains basic
+        Medicinal Plant information e.g. (Scientific Name, Local Name, Family, Source/ Origin). Therapeutic Uses
+        (Disease Indication), Pharmacology Class, References (Journal source, title, Authors, Address, Abstract),
+        Parts Used, Main Actions and a Descriptive review of information such as reported biological activities-pharmacological
+        actions, toxicity, Reported Recipes/Traditional Preparation etc. For information on Bioactive Constituents , molecular
+        and structural are provided (e.g. CAS Number, Class/Skeletal type, Formula Weight, Struct3D and Struc2D, ClogP etc.).
+    </p>
+
+    <p class="greetingContent">
+        The aim of the database is to provide the integration of African medicinal plants and their constituents
+        in medicinal chemistry drug discovery and to streamline drug discovery from African medicinal plants.
+    </p>
+
+    <p class="greetingContent">
+        Africa is a rich source of medicinal plants and African plants have long been the source of
+        important products with nutritional and therapeutical value.  Notable examples are Catharanthus roseus,
+        which yields anti-tumour agents such as vinblastine and vincristine, Pausinystalia yohimbe from Cameroon,
+        Nigeria and Rwanda, which yields yohimbine; and Rauwolfia vomitoria, from Madagascar, Mozambique and Zaire,
+        which is exploited to yield reserpine and ajmaline. Natural products continue to play an important role in
+        the discovery of novel bioactives and represents the richest source of inspiration for drug design Within the
+        framework of drug discovery, African medicinal plants offer opportunities for new products and providing novelties
+        with scaffolds with the potential to be privileged structures..
+    </p>
+
+    <p class="greetingContent">
+        AMPBAC database provides an information platform and starting points for exhaustive evaluation of
+        African medicinal plant resources for new drug product launch.
+    </p>
+
+    <p class="greetingContent" style="font: bold 13px Arial;">
+        Availability:
+    </p>
+
+    <p class="greetingContent">
+        Academic/governmental users may access the AMPBAC database for free under a
+        license agreement. Industrial/commercial users may access this database with a subscription fee.
+        Please follow the instructions on the "Sign up" page.
+    </p>
+</div>

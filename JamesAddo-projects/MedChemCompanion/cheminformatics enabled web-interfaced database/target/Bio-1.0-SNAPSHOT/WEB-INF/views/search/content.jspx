@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:spring="http://www.springframework.org/tags"
+     xmlns:form="http://www.springframework.org/tags/form">
+
+    <jsp:output omit-xml-declaration="true" />
+
+    <!-- CSS URL variables -->
+    <spring:url value="/resources/css/search/style.css" var="style_url" />
+
+    <!-- Javascript URL variables -->
+    <spring:url value="/resources/js/script/search/main.js" var="main_url" />
+    <spring:url value="/resources/js/lib/require/require.js" var="requirejs_url" />
+
+    <link href="${style_url}" rel="stylesheet" type="text/css" />
+
+    <!--<script src="/resources/js/lib/chemaxon/webservices.js">-->
+        <!--&lt;!&ndash; Chemaxon webservice &ndash;&gt;-->
+    <!--</script>-->
+
+    <!--<script src="/resources/js/lib/chemaxon/util.js">-->
+        <!--&lt;!&ndash; Chemaxon utils &ndash;&gt;-->
+    <!--</script>-->
+
+    <script data-main="${main_url}" src="${requirejs_url}">
+        <!-- Main script -->
+    </script>
+
+    <input id="searchBar" name="query" type="text" />
+    <input id="searchBtn" type="button" value="Search" />
+
+    <input id="exportBtn" type="button" value="Export" />
+
+    <iframe id="sketch" src="/resources/template/chemaxon/editor.html"
+            style="overflow: hidden; min-width: 550px; min-height: 450px; border: 1px solid darkgray;">
+        <!-- Sketch frame -->
+    </iframe>
+
+    <!--<script type="text/javascript">-->
+        <!--$(document).ready(function handleDocumentReady (e) {-->
+            <!--getMarvinPromise("#sketch").done(function (sketcherInstance) {-->
+                <!--$("#exportBtn").on("click", function handleGetSmilesButton () {-->
+                    <!--var getMolConvertURL = function () {-->
+                        <!--var ws = getDefaultServices();-->
+                        <!--return ws['molconvertws'];-->
+                    <!--};-->
+
+                    <!--var	data = JSON.stringify({-->
+                        <!--"structure" : sketcherInstance.exportAsMrv(),-->
+                        <!--"inputFormat" : "mrv",-->
+                        <!--"parameters" : "smiles"-->
+                    <!--});-->
+
+                    <!--$.ajax({-->
+                        <!--"url": getMolConvertURL()-->
+                        <!--,"type": "POST"-->
+                        <!--,"dataType": "json"-->
+                        <!--,"contentType": "application/json"-->
+                        <!--,"data": data-->
+                    <!--}).done(function (data, textStatus, jqXHR) {-->
+                        <!--$("#searchBar").val(data['structure']);-->
+                    <!--}).fail(function() {-->
+                        <!--console.log("Something wrong!");-->
+                    <!--});-->
+                <!--});-->
+            <!--}).fail(function () {-->
+                <!--alert("Cannot retrieve sketcher instance from iframe");-->
+            <!--});-->
+        <!--});-->
+    <!--</script>-->
+</div>

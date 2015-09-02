@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:spring="http://www.springframework.org/tags"
+     xmlns:form="http://www.springframework.org/tags/form">
+
+    <jsp:output omit-xml-declaration="true" />
+
+    <spring:url value="/resources/styles/gal/slick_grid/slick.grid.css" var="slick_grid_style_url" />
+    <spring:url value="/resources/styles/gal/jquery_ui/jquery-ui-1.10.3.custom.css" var="jquery_ui_style_url" />
+
+    <spring:url value="/resources/scripts/lib/jquery_ui/jquery-ui-1.10.3.custom.js" var="jquery_ui_url" />
+    <spring:url value="/resources/scripts/lib/jquery/plugins/jquery.event.drag-2.2.js" var="jquery_event_url" />
+    <spring:url value="/resources/scripts/lib/slick_grid/slick.core.js" var="slick_core_url" />
+    <spring:url value="/resources/scripts/lib/slick_grid/slick.grid.js" var="slick_grid_url" />
+
+    <spring:url value="/resources/scripts/src/browse.js" var="browse_script_url" />
+
+    <link href="${slick_grid_style_url}" type="text/css" rel="stylesheet" />
+    <link href="${jquery_ui_style_url}" type="text/css" rel="stylesheet" />
+
+    <div id="periodic_table"> Browse table </div>
+
+    <script src="${jquery_ui_url}" type="text/javascript"> <!-- JQuery UI APIs --> </script>
+    <script src="${jquery_event_url}" type="text/javascript"> <!-- JQuery event APIs --> </script>
+    <script src="${slick_core_url}" type="text/javascript"> <!-- SlickGrid core APIs --> </script>
+    <script src="${slick_grid_url}" type="text/javascript"> <!-- SlickGrid grid APIs --> </script>
+
+    <script src="${browse_script_url}" type="text/javascript"> <!-- Browse script --> </script>
+
+</div>

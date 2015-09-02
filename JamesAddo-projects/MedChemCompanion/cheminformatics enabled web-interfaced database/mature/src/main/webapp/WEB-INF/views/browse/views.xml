@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+    <definition name="browse" extends="WEB-INF.layouts.default">
+        <put-attribute name="center">
+            <definition extends="WEB-INF.layouts.default.center">
+                <put-attribute name="content" value="/WEB-INF/views/browse/content.jspx"/>
+            </definition>
+        </put-attribute>
+    </definition>
+
+</tiles-definitions>

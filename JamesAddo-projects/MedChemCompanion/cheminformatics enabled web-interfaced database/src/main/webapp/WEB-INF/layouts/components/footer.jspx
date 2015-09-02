@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<div id="hdr" class="ctr_cls"
+     xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:tiles="http://tiles.apache.org/tags-tiles"
+     xmlns:spring="http://www.springframework.org/tags">
+
+    <jsp:output omit-xml-declaration="true" />
+
+    <div id="ftr" class="ctr_cls">
+        <!-- Footer -->
+    </div>
+
+</div>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<div id="lpnl"
+     xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:spring="http://www.springframework.org/tags">
+
+    <jsp:output omit-xml-declaration="true" />
+
+    <spring:url value="/resources/images/left_panel/li_icon.png" var="li_icon_url" />
+
+    <spring:url value="padding-right: 1em;" var="paddingRight" />
+
+
+    <ul id="navl">
+        <li>
+            <img src="${li_icon_url}" style="${paddingRight}" />
+            <a href="/home">Home</a>
+        </li>
+        <li>
+            <img src="${li_icon_url}" style="padding-right: 1em;" />
+            <a href="#">About Us</a>
+        </li>
+        <li>
+            <img src="${li_icon_url}" style="padding-right: 1em;" />
+            <a href="#">Browse</a>
+        </li>
+        <li>
+            <img src="${li_icon_url}" style="padding-right: 1em;" />
+            <a href="/search">Search</a>
+        </li>
+        <li>
+            <img src="${li_icon_url}" style="padding-right: 1em;" />
+            <a href="#">Sign up</a>
+        </li>
+        <li>
+            <img src="${li_icon_url}" style="padding-right: 1em;" />
+            <a href="#">Login</a>
+        </li>
+    </ul>
+
+</div>

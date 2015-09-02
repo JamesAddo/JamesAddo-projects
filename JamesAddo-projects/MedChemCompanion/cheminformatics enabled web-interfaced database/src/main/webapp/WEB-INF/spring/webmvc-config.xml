@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- Configuration to use annotation driven to initiate Controllers -->
+    <mvc:annotation-driven/>
+    <context:component-scan base-package="bio.controllers"/>
+
+    <!-- Static resources configuration -->
+    <mvc:resources mapping="/resources/**" location="WEB-INF/resources/"/>
+
+    <!-- Tile configuration -->
+    <bean id="tileConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+        <property name="definitions">
+            <list>
+                <!-- Generic layout definitions -->
+                <value>WEB-INF/layouts/views.xml</value>
+
+                <!-- Home page definition -->
+                <value>WEB-INF/views/home/views.xml</value>
+
+                <!-- Search page definition -->
+                <value>WEB-INF/views/search/views.xml</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="tileViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
+    </bean>
+</beans>
