@@ -7,7 +7,7 @@ medicinal chemistry data analysis. Since I do a lot of QSAR work in R and scikit
 make life easier for me as I do my QSAR modeling and analysis. Some of them are for private consumption. 
 However, I’ve released a few of them to GITHUB since they seem to be generally useful.
 
-2. Development of web-based informatics tools for use by chemists.
+2.Development of web-based informatics tools for use by chemists.
 
 Software tools for applications such as modeling the similarities among drug-like small molecules, high-throughput 
 screening (HTS) data analysis, Structure-Activity Relationship (SAR) analysis and visualization, elucidating target /MOA
