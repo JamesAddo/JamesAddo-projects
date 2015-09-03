@@ -1,4 +1,5 @@
-/*MedChemCompanion MMPMaker's Molecule Fragmenter based on Java implementation of Rea and Hussains algorithm*/
+/*MedChemCompanion MMPMaker's Molecule Fragmenter based on Java implementation of Jameed Hussain and Ceara Rea algorithm-Computationally Efficient Algorithm to Identify Matched Molecular Pairs (MMPs) in Large Data Sets, J. Chem. Inf. Model., 2010, 50 (3), pp 339–348.
+/
 /*
  * Copyright (C)2015, James Addo.
  * All rights reserved.
@@ -48,7 +49,7 @@ import org.RDKit.Bond_Vect;
 import org.RDKit.ROMol_Vect;
 import org.RDKit.ROMol_Vect_Vect;
 import org.RDKit.Atom_Vect;
-public class MMPMakerTest20 extends GraphMolTest{
+public class MMPMakerTest extends GraphMolTest{
    //get_bonds_to_break
 	 Match_Vect_Vect get_bonds_to_break(ROMol mol){
 		  //Global smarts used by the program
@@ -357,3 +358,4 @@ for (int i = 0; i < 10; i++){
     }
 }
    
+
