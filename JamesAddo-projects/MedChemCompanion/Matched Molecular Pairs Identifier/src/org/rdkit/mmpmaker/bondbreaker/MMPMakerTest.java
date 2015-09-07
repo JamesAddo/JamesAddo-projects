@@ -1,4 +1,6 @@
-/*MedChemCompanion MMPMaker's Molecule Fragmenter based on Java implementation of Jameed Hussain and Ceara Rea algorithm-Computationally Efficient Algorithm to Identify Matched Molecular Pairs (MMPs) in Large Data Sets, J. Chem. Inf. Model., 2010, 50 (3), pp 339–348.
+/*MedChemCompanion MMPMaker's Molecule Fragmenter based on Java implementation of Jameed Hussain and Ceara Rea 
+algorithm-Computationally Efficient Algorithm to Identify Matched Molecular Pairs (MMPs) in Large Data Sets, 
+J. Chem. Inf. Model., 2010, 50 (3), pp 339â€“348.
 /
 /*
  * Copyright (C)2015, James Addo.
