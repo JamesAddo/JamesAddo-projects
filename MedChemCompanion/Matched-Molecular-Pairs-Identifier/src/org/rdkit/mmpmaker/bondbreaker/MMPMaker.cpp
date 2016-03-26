@@ -248,7 +248,7 @@ void attachmentPoints(String smi2){
 //Creates an Integer array for storing count results
 	int attachments;
 	int asterisks = 0;
-	boolean match = false;
+	bool match = false;
 
 	//loop //if (smi2[i] == '*')
 	for (int i = 0; i < smi2.length(); i ++) {
@@ -344,7 +344,7 @@ else if(ftype == "cyclic_and_acyclic"){
 	molfrag  = Null;
 	int result_hcount = 0;
 	String result = NULL;
-	boolean valid = true;
+	bool valid = true;
 	for (int i = 0; i < molfragsmi.size; i++){
 		attachments = attachmentPoints(molfragsmi[i]);
                 ROMol *fMol=SmilesToMol(molfragsmi[i]);
