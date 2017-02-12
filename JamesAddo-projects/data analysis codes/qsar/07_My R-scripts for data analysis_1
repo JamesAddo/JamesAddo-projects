@@ -1,0 +1,167 @@
+My R-scripts for data analysis using pre-built 3D coordinate files, CDK descriptors and Bioclipse R for processing and loading files.
+To build and validate QSAR model and for creating the training and testing the dataset R is used from within Bioclipse in these cases.
+
+Helpers/Files
+1.3D Coordinates source- http://pele.farmbio.uu.se/bcr-temp/data/screen_U251_3D.sdf"
+2. Required R libraries- U251.R
+3. http://pele.farmbio.uu.se/bcr/data/cas_N6512.sdf"
+
+## 01_ Example 1
+
+Helpers/Files
+1.3D Coordinates source- http://pele.farmbio.uu.se/bcr-temp/data/screen_U251_3D.sdf"
+2. Required R libraries- U251.R
+
+Using the pre-built SDF with 3D coordinates. This saves time. 
+//Create a new project and download SDF file
+1. ui.newProject("screenU251")
+2. bioclipse.downloadAsFile("http://pele.farmbio.uu.se/bcr-temp/data/screen_U251_3D.sdf", "/screenU251/screen_U251_3D.sdf")
+3. mols=cdk.loadMolecules("/screenU251/screen_U251_3D.sdf")
+
+//Compute descriptors and set up dataset
+We have now the chemical structures in an SDF with 3D coordinates (to skip ahead here, download the file screen_U251_3D.sdf. We now proceed to describe these molecules numerically by calculating descriptors.
+
+//Set up list of descriptors - use all available in CDK
+dlist=qsar.getDescriptorIDs(true)
+descriptors=dlist.toString().replace(", ","\n").replace("[","").replace("]","")
+ui.newFile("/U251_QSAR/screen-cdk.descriptors", descriptors)
+ 
+//Do descriptor calculation, append the response property as last column
+dset=qsar.calculate(mols,dlist)
+dset.setNameProperty("name")
+dset.setResponseProperty("class")
+ 
+//Save results to file
+ui.newFile("/U251_QSAR/dataset.csv", dset.asCSV("\t"))
+
+3. Build and validate QSAR model
+
+For training and testing the dataset we use R from within Bioclipse. You can download the script containing all the commands as u251.R (time to complete the R code - ~2 minutes)*. 
+
+Before proceeding make sure the file functions_U251.R is downloaded and imported it in your U251-QSAR project. Load the required R libraries and functions by sourcing the file:
+
+source("U251-QSAR/functions_U251.R")
+ 
+you can also open the file in Bioclipse's R editor and source it by clicking on the "Source R script" button in the main toolbar. 
+Begin the analysis: 
+
+# Read data
+u251 <- read.delim("U251-QSAR/dataset.csv", sep="\t", na.strings="NaN", row.names=1)
+ 
+# Create a training set and an independent validation set of 1000 observations
+set.seed(123)
+tmp <- sample.int(nrow(u251), size=1000)
+u251.validation <- u251[tmp,]
+u251.train <- u251[-tmp,]
+ 
+Due to the fact that all CDK descriptors are not possible to compute for all molecules in the U251 dataset, there are NA values in the dataset. It can also happen that some descriptors have the same value for all molecules in the dataset (i.e. the descriptor has zero variance across the dataset). Such descriptors does not carry any useful information for fitting a model to predict the growth inhibition. These two issues (NA-values and descriptors with zero variance) need to be taken care of, which we do by using the functions 'naAndStdvTreatment' and 'imputation'. 'naAndStdvTreatment' removes variables in the dataset that has a large proportion of NA values or has zero variance. 'imputation' does a simple imputation of the remaining NA values with the median of the entries in the variable. Note that these procedures are performed only on the training data in order to preserve the independence between the training and the validation datasets. We will later use the results from 'naAndStdvTreatment' and 'imputation' _applied on the training data_ to remove variables and do the imputation on the validation data (see below). 
+
+# Handle variables with lots of NA and with zero standard deviation
+u251.train.naAndStdvTreatment <- naAndStdvTreatment(u251.train, 0.2)
+u251.train <- u251.train.naAndStdvTreatment$dataset
+ 
+# Impute NA in variables with not so many NA
+u251.train.imputed <- imputation(u251.train, response="class")
+u251.train <- u251.train.imputed$imputedData
+ 
+# Fit random forest model to training set
+u251.train.rf <- randomForest(as.factor(class) ~ ., data=u251.train)
+ 
+# Test performance of fitted model using the independent validation set. We here use the results from 'naAndStdvTreatment' and 'imputation' _applied on the training data_ to remove variables and do the imputation on the validation data.
+u251.validation <- predict(u251.train.naAndStdvTreatment, u251.validation)
+u251.validation <- predict(u251.train.imputed, u251.validation)
+u251.classProbabilities.validation <- predict(u251.train.rf, u251.validation, type="prob")[,2]
+ 
+# Plot ROC curve for prediction of the independent validation set
+roc.curve <- plot.roc(u251.validation[,"class"], u251.classProbabilities.validation, percent=TRUE, ci=TRUE)
+roc.curve.ci <- ci.se(roc.curve, specificities=seq(0, 100, 5))
+plot(roc.curve.ci, type="shape", col="cornflowerblue")
+ 
+# Compute area under the ROC curve (AUC) and confidence intervals for the AUC
+auc(roc.curve)
+ci.auc(roc.curve)
+ 
+The ROC curve, produced using the predicted growth inhibition on an external test set, shows that the model performs relatively well (although not excellently). The AUC is 77.8% with the following a 95% confidence interval: 74.9%-80.7%, indicating relatively good predictive performance. 
+
+# Fit random forest model to the whole dataset (after dealing with NA and variables with zero standard deviation - see explanation above)
+u251.naAndStdvTreatment <- naAndStdvTreatment(u251, 0.2)
+u251 <- u251.naAndStdvTreatment$dataset
+u251.imputed <- imputation(u251, response="class")
+u251 <- u251.imputed$imputedData
+u251.rf <- randomForest(as.factor(class) ~ ., data=u251)
+ 
+# This is the fitted model that we will use for future predictions. We thus save the random forest model as an Rdata file
+save(file="U251-QSAR/u251randomForestModel.Rdata", u251.rf, u251.naAndStdvTreatment, u251.imputed)
+
+## 02_Example 2
+
+Helpers/Files
+1. 3D Coordinates source- http://pele.farmbio.uu.se/bcr/data/cas_N6512.sdf"
+2. Required R libraries- U251.R
+
+Download the pre-built 3D coordinate file cas_N6512.sdf into the same project in Bioclipse and load it into memory, and then continue as below. 
+
+bioclipse.downloadAsFile("http://pele.farmbio.uu.se/bcr/data/cas_N6512.sdf", "/AmesMutagenicity/cas_N6512.sdf");
+mols=cdk.loadMolecules("/AmesMutagenicity/cas_N6512.sdf");
+
+Using the pre-built SDF with 3D coordinates. This saves time. 
+//Create a new project and download SDF file
+
+1.bioclipse.downloadAsFile("http://pele.farmbio.uu.se/bcr/data/cas_N6512.sdf", "/AmesMutagenicity/cas_N6512.sdf");
+2. mols=cdk.loadMolecules("/AmesMutagenicity/cas_N6512.sdf");
+
+//Generate a sparse signature dataset
+sdset=signatures.generateSparseDataset(mols, 3, "name", "class");
+ 
+//Save files to sparse dataset and vector of class belongings
+ui.newFile("/AmesMutagenicity/cas_N6512.csr", sdset.toSparseString(" "))
+ui.newFile("/AmesMutagenicity/cas_N6512-classes.txt", sdset.getResponseValuesRaw())
+ 
+//Save a list of all signatures to file
+sb = java.lang.StringBuffer();
+for (i=0; i< sdset.getColHeaders().size(); i++){
+    sb.append(sdset.getColHeaders().get(i) + "\n");
+}
+ui.newFile("/AmesMutagenicity/cas_N6512-sign.txt", sb.toString())
+
+We save several files: The data set in sparse representation (cas_N6512.csr), the response values with class belongings for the molecules (cas_N6512-classes.txt), and a list of the signature descriptors (cas_N6512-sign.txt).
+
+//Build and validate QSAR model
+
+# Read data
+cas.x <- read.matrix.csr(file="AmesMutagenicity/cas_N6512.csr")
+cas.y <- read.delim("AmesMutagenicity/cas_N6512-classes.txt", sep=",", header=F)
+cas.y <- as.factor(as.matrix(cas.y))
+ 
+# Create a training set and an independent validation set of 1000 observations
+set.seed(456)
+tmp <- sample.int(nrow(cas.x), size=1000)
+cas.x.training <- cas.x[-tmp,]
+cas.x.validation <- cas.x[tmp,]
+cas.y.training <- cas.y[-tmp]
+cas.y.validation <- cas.y[tmp]
+ 
+# Tune SVM parameters and get best model
+cas.training.svm <- best.svm(x=cas.x.training, y=cas.y.training, gamma=c(0.001,0.01,0.1), cost=c(4,8,16), probability=T, tunecontrol=tune.control(cross=3))
+ 
+# Test performance of tuned model using the independent validation set
+cas.prediction.validation <- predict(cas.training.svm, cas.x.validation, probability=T)
+cas.classProbabilities.validation <- attr(cas.prediction.validation, "probabilities")[,1]
+ 
+# Plot ROC curve for prediction of the independent validation set
+roc.curve <- plot.roc(cas.y.validation, cas.classProbabilities.validation, percent=TRUE, ci=TRUE)
+roc.curve.ci <- ci.se(roc.curve, specificities=seq(0, 100, 5))
+plot(roc.curve.ci, type="shape", col="cornflowerblue")
+ 
+# Compute area under the ROC curve (AUC) and confidence intervals for the AUC
+auc(roc.curve)
+ci.auc(roc.curve)
+The ROC curve, produced using the predicted Ames mutagenicity on an external test set, shows that the model performs very well. The AUC is 87.85% with the following a 95% confidence interval: 89.98%-85.72%. Thus, we now know that the model exhibits good performance and we will therefore fit the model to the whole dataset (i.e. both the training data and the validation data). To ensure as good performance as possible of the model fitted to the whole data, we need to conduct a new grid search to optimize SVM parameters.
+  
+We now build and save the model based on all available data. Please note that this operation takes about 5-8 minutes to complete on a standard laptop. The data is rather big and many models are built during the cross-validation in the grid search for optimal SVM parameter values; although we are using a sparse matrix representation this requires some time.
+# Fit an SVM model with tuned parameter choices to the whole dataset
+cas.svm <- best.svm(x=cas.x, y=cas.y, gamma=c(0.001,0.01,0.1), cost=c(4,8,16), probability=T, tunecontrol=tune.control(cross=3))
+# Save SVM model as an Rdata file
+save(file="AmesMutagenicity/casSvmModel.Rdata", cas.svm)
+
+We end by saving the trained model to an Rdata file, which in the next step will be used for predictions in Bioclipse.
