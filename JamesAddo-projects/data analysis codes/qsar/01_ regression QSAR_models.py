@@ -88,32 +88,6 @@ test_SVMpredictions = rf.predict(test_fps_array)
 scores = cross_validation.cross_val_score(rf, fps_array, acts_array, cv=5)
 # scores = cross_validation.cross_val_score(rf, X_train,y_train, cv=cv_counter,score_func=metrics.zero_one_score)
 
-# output confusion matrix and percentage accuracy on test sets    
-    print metrics.confusionmatrix(test_acts_array, test_SVMpredictions) 
-    accuracy = rf.score(test_fps_array, test_acts_array)
-           print accuracy 
-
-# calculate probabilities for each test molecules
-test_SVMprobabilities = rf.predict_proba(test_fps_array)
-
-# compute AUC metric for this CV fold
-        fpr, tpr, thresholds = metrics.roc_curve(test_acts_array, test_SVMprobabilities)
-        roc_auc = metrics.auc(fpr, tpr)
-        print "AUC (fold %d/%d): %f" % (i + 1, n, roc_auc)
-        mean_auc += roc_auc
-
-    print "Mean AUC: %f" % (mean_auc/n)
-    plt.plot(fpr, tpr, label="Model#%d (AUC=%.2f)" % (model_id + 1, roc_auc))
-
-# baseline, axes, labels, etc
-plt.plot([0, 1], [0, 1], "k--")
-plt.xlim([0.0, 1.0])
-plt.ylim([0.0, 1.05])
-plt.xlabel('False Positive Rate')
-plt.ylabel('True Positive Rate')
-plt.legend(loc="lower right")
-plt.show()
-
 ######################## MAIN PART ###########################
 if __name__=='__main__':
 # read in command line options
