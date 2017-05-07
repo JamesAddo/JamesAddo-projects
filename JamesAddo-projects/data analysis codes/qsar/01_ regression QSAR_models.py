@@ -86,7 +86,6 @@ test_SVMpredictions = rf.predict(test_fps_array)
 
 # cross-validate
 scores = cross_validation.cross_val_score(rf, fps_array, acts_array, cv=5)
-# scores = cross_validation.cross_val_score(rf, X_train,y_train, cv=cv_counter,score_func=metrics.zero_one_score)
 
 ######################## MAIN PART ###########################
 if __name__=='__main__':
