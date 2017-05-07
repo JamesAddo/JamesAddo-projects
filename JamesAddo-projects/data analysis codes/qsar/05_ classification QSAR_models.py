@@ -103,9 +103,6 @@ for k,v in testmols_dic.items():
 # make predictions for test compounds
 test_SVMpredictions = rf.predict(test_fps)
 
-# cross-validate
-scores = cross_validation.cross_val_score(rf, fps, ys_fit, cv=5)
-
 # output confusion matrix and percentage accuracy on test sets    
     print metrics.confusionmatrix(test_mols_act_label, test_SVMpredictions) 
     accuracy = rf.score(test_fps, test_mols_act_label)
