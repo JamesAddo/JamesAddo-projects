@@ -1,0 +1,130 @@
+QSAR modeling of 5-HT1A Receptor Binding: Predictions of 5-HT1A Ligands Using Machine Learning Regression/Classification Models. 
+
+The work presented is a medicinal chemistry data analysis project involving QSAR modeling of 5-HT1A Receptor Binding for 
+predictions of 5-HT1A ligands using machine learning regression/classification models. Structures and activity data from Chembl
+have been downloaded and curated. Output data is a .CSV file. PaDEL descriptors were calculated. Ki values in nm were converted
+to pKi by first converting to Molar (Ki*10^-9) and then caluculating the negative logarithm (-logKi). The final CSV file 
+contain smiles, PaDEL Descriptors and pKi. 
+
+1D and 2D descriptors were calculated using the PaDEL-Descriptor program. PaDEL currently calculates a total of 1444 1D and 2D 
+molecular descriptors.
+Yap, C. W. PaDEL-descriptor: An open source software to calculate molecular descriptors and fingerprints. J. Comput. Chem. 2011,
+32 (7), 1466−1474.
+
+# Load package randomForest for random forest modeling, package e1071 for SVM modeling, package FNN for calculating nearest neighbors.
+Caret functions and regression/classification algorithms are also used to construct the QSAR models.
+library(e1071)
+library(caret)
+library(randomForest)
+library(FNN)
+set.seed(123)
+1. Statistical Pre-processing
+# Set the working environment and save data files in the folder
+setwd("C:/Users/user.admin-PC/Documents/5-HT1A_Regression")
+# Read in descriptor and bioactivity data
+dataset <- read.csv("C:/Users/user.admin-PC/Documents/5-HT1A_Regression/tid51_Serotonin1a(5-HT1a) receptor_PaDEL_pKi_smiles.csv", header = TRUE)
+# There are 1342 rows (i.e. unique chemical compounds) and 1446 columns (smiles +1444  PaDELdescriptors + pKi)
+dim(dataset)
+[1] 1342 1446
+
+# Remove the smiles column from the data frame
+dataset $SMILES <- NULL
+dataset $Structure <- NULL
+Descr <- dataset[, 1: 1444]
+Bioactivity <- dataset[1445]
+dim(Descr)
+[1] 1342 1444
+dim(Bioactivity)
+> dim(Bioactivity)
+[1] 1342    1
+
+# Exclude zero- and near zero-variance descriptors
+nzvDescr <- nearZeroVar(Descr, freqCut = 30/1)
+Descr <- Descr[, -nzvDescr]
+dim(Descr)
+[1] 1342 1052
+
+## Calculate correlation matrix
+
+descrCorrMatrix <- cor(Descr, use = "pairwise.complete.obs")
+
+# Exclude correlated predictors./Find correlation r > 0.95/Find descriptors that are highly correlated
+highlyCorDescr <-findCorrelation(descrCorrMatrix, cutoff = .95)
+Descr <- Descr [, -highlyCorDescr]
+dim(Descr)
+[1] 1342  607
+# Set random seed value to ensure consistent training results each time.
+set.seed(1)
+
+# Split the data into a training/test set by 70% training/30% test.
+dataset_inTrain <- sample.int(nrow(Bioactivity), size=1000)
+dataset_training <- Descr[dataset_inTrain,]
+dataset_testing <- Descr[-dataset_inTrain,]
+
+# There are 1000 training chemicals and 342 test chemicals
+dim(dataset_training)
+[1] 1000  607
+dim(dataset_testing)
+[1] 342 607
+
+tmp <- sample.int(nrow(Bioactivity), size=1000)
+dataset_inTrain <- createDataPartition(Bioactivity, p = 0.7), list = FALSE)
+dataset _training <- dataset[dataset_inTrain,] 
+dataset_testing <- dataset[-dataset_inTrain,]
+
+dim(dataset_training)
+dim(dataset_testing)
+
+training_bioactivity<- Bioactivity [dataset_inTrain] 
+testing_bioactivity<- Bioactivity [-dataset_inTrain] 
+summary(training_bioactivity)
+Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  5.054   6.996   7.747   7.727   8.500  10.523
+summary(testing_bioactivity)
+Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  5.250   6.984   7.796   7.775   8.492  10.851
+
+We convert the training descriptors to z-scores by centering them to zero mean and scaling their
+values to unit variance:
+preProcValues <- preProcess(dataset_training, method = c("center", "scale"))
+dataset_training_scaled<- predict(preProcValues, dataset_training)
+dataset_testing_scaled<- predict(preProcValues, dataset _testing)
+
+training_processed_data <- cbind(training_bioactivity, dataset_training_scaled)
+testing_processed_data <- cbind(testing_bioactivity, dataset_testing_scaled)
+dim(training_processed_data)
+[1] 1000  608
+dim(testing_processed_data)
+[1] 342 608
+
+2. Model Training
+2.1 Random forest regression 
+# Load package randomForest for random forest modeling 
+library(randomForest) 
+# Use the function randomForest() to build the random forest model. The number of trees 
+# (ntree) is set to 500; the node size (nodesize) is set to 5; the number of variables randomly # sampled at each tree node (mtry) is set to 1/3 the number of 607 descriptors, i.e., 200 
+rfModel <- randomForest(training_bioactivity ~., data= training_processed_data, ntree=500, nodesize=5, mtry=200, importance=TRUE, na.action=na.omit) 
+
+# Predict pKi from the training set 
+PredpKitrainingRF<-predict(rfModel, dataset_training_scaled) 
+# Correlation between measured and predicted pKi values for the training set 
+MeasuredpKiTraining<- training_processed_data $training_bioactivity
+CorrelationtrainingRF<-lm(PredpKitrainingRF ~ MeasuredpKiTraining) 
+summary(CorrelationtrainingRF)
+Call:
+lm(formula = PredpKitrainingRF ~ MeasuredpKiTraining)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.68065 -0.11721 -0.00695  0.11692  0.66197 
+
+Coefficients:
+                    Estimate Std. Error t value Pr(>|t|)    
+(Intercept)         1.553409   0.045016   34.51   <2e-16 ***
+MeasuredpKiTraining 0.799822   0.005773  138.54   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.1891 on 997 degrees of freedom
+Multiple R-squared:  0.9506,    Adjusted R-squared:  0.9506 
+F-statistic: 1.919e+04 on 1 and 997 DF,  p-value: < 2.2e-16
