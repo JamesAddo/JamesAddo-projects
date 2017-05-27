@@ -1,0 +1,329 @@
+Anti-malarial screening hits explored by SAR with advanced machine learning methods. James Addo, April 25, 2017. 
+
+In this project, we used quantitative structure-activity relationships (QSAR) models for analysis of Anti-malarial
+high-throughput screening datasets and the prediction of Anti-malarial compounds. The research seeks  to develop a 
+highly predictive classification model through creating an algorithm to describe the features of an ideal Anti-malarial
+compound. The goal of this research is to create a reuasable open-source tool for molecular structure design of novel 
+Anti-malarial compounds. We have initially used RDKit cheminformatics toolkit and Morgan fingerprints for the QSAR
+modeling. Machine learning algorithms and performance metrics were implemented using version 17.0 of the scikitlearn
+Package. Compounds were encoded with circular Morgan fingerprints calculated using RDkit (release version 2015.09.2).
+Morgan fingerprints encode compound structures by considering radial atom neighborhoods. Various types of classifier are 
+to be used in combination with the Morgan fingerprints. Random forest (RF), support vector machine (SVM), stochastic 
+gradient descent (SGD), logistic regression (LR), naiv̈e Bayes (NB), gradient boosting machine (GBM) and kNN classifiers,
+as implemented in scikit-learn 0.17, are to be used for model development. Binary classification models  generated using 
+a combination of Morgan-SVM, Morgan-RF and Morgan-GBM. The combination of these three models as an ensemble was evaluated 
+for improved predictive ability.
+
+Modeling Data sets
+Model Training Data Sets
+1. Malaria (Plasmodium falciparum) CDD Public datasets (MMV, St. Jude, Novartis, and TCAMS) 3D7 EC50 <10 nM 175 actives, 
+19,604 inactives assembled in the publication Open Source Bayesian Models. 1. Application to ADME/Tox and Drug Discovery 
+Datasets, J. Chem. Inf. Model. 2015, 55, 1231−1245 DOI: 10.1021/acs.jcim.5b00143
+References:
+(1) Guiguemde, W. A.; Shelat, A. A.; Bouck, D.; Duffy, S.; Crowther, G. J.; Davis, P. H.; Smithson, D. C.; Connelly, M.; 
+Clark, J.; Zhu, F.; Jimenez-Diaz, M. B.; Martinez, M. S.; Wilson, E. B.; Tripathi, A. K.; Gut, J.; Sharlow, E. R.; Bathurst,
+I.; El Mazouni, F.; Fowble, J. W.; Forquer, I.; McGinley, P. L.; Castro, S.; Angulo-Barturen, I.; Ferrer, S.; Rosenthal, P. 
+J.; Derisi, J. L.; Sullivan, D. J.; Lazo, J. S.; Roos, D. S.; Riscoe, M. K.; Phillips, M. A.; Rathod, P. K.; Van Voorhis, W.
+C.; Avery, V. M.; Guy, R. K. Chemical genetics of Plasmodium falciparum. Nature 2010, 465, 311−315.
+(2) Gamo, F.-J.; Sanz, L. M.; Vidal, J.; de Cozar, C.; Alvarez, E.; Lavandera, J.-L.; Vanderwall, D. E.; Green, D. V. S.; 
+Kumar, V.; Hasan, S.; Brown, J. R.; Peishoff, C. E.; Cardon, L. R.; Garcia-Bustos, J. F. Thousands of chemical starting 
+points for antimalarial lead identification. Nature 2010, 465, 305−310.
+(3) Gagaring, K.; Borboa, R.; Francek, C.; Chen, Z.; Buenviaje, J.; Plouffe, D.; Winzeler, E.; Brinker, A.; Diagena, T.; 
+Taylor, J.; Glynne, R.; Chatterjee, A.; Kuhen, K. Novartis-GNF Malaria Box. ChEMBLNTD
+(www.ebi.ac.uk/chemblntd).
+Model Validation Data Sets 
+1. Johns Hopkins (2524 compounds assayed) . Of these, 247 compounds were classified as actives, whereas the remaining 2277 
+compounds were classified as inactives. The dataset was taken from the Johns Hopkins set of compounds in the publication: 
+Shared Consensus Machine Learning Models for Predicting Blood Stage Malaria Inhibition Andreas Verras, Chris L. Waller, Peter 
+Gedeck, Darren V. S. Green, Thierry Kogej, Anandkumar Raichurkar, Manoranjan Panda, Anang Shelat, Julie Clark, Kip Guy, George 
+Papadatos, and Jeremy Burrows.
+QSAR python code. 
+Dr. James Addo
+Email:James.Addo@gmail.com 
+Github Website:https://github.com/JamesAddo/JamesAddo-projects
+James.Addo@gmail.com
+addoj@umkc.edu
+In [1]:
+from rdkit import Chem, DataStructs
+from rdkit.Chem import AllChem, Descriptors
+In [2]:
+# from rdkit.Chem.Draw import IPythonConsole
+# from rdkit.Chem import Draw
+# IPythonConsole.ipython_useSVG=True
+In [3]:
+import numpy as np
+from sklearn.svm import SVC
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from sklearn.model_selection import train_test_split, StratifiedKFold, GridSearchCV
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import accuracy_score, cohen_kappa_score, matthews_corrcoef
+from sklearn.externals import joblib
+Reading molecules and activity from SDF
+In [4]:
+fname = "C:/Data/data_malaria.sdf"
+
+mols = []
+y = []
+for mol in Chem.SDMolSupplier(fname):
+    if mol is not None:
+        mols.append(mol)
+        y.append(mol.GetIntProp("data_malaria_class"))
+Calculate descriptors (fingerprints) and convert them into numpy array
+In [5]:
+# generate binary Morgan fingerprint with radius 2
+fp = [AllChem.GetMorganFingerprintAsBitVect(m, 2) for m in mols]
+In [6]:
+def rdkit_numpy_convert(fp):
+    output = []
+    for f in fp:
+        arr = np.zeros((1,))
+        DataStructs.ConvertToNumpyArray(f, arr)
+        output.append(arr)
+    return np.asarray(output)
+In [7]:
+x = rdkit_numpy_convert(fp)
+In [8]:
+x.shape
+In [9]:
+# check whether the data set is balanced
+sum(y) / len(y)
+Set random seed to make all further calculations reproducible
+In [10]:
+seed = 42
+Split the whole set into training and test sets
+In [11]:
+# randomly select 20% of compounds as test set
+x_tr, x_ts, y_tr, y_ts = train_test_split(x, y, test_size=0.20, random_state=seed)
+Create folds for cross-validation
+In [12]:
+cv = StratifiedKFold(n_splits=5, random_state=seed)
+In [13]:
+# print out ids of folds
+for i, (train_index, test_index) in enumerate(cv.split(x_tr, y_tr)):
+    print("\nFold_" + str(i+1))
+    print("TRAIN:", train_index)
+    print("TEST:", test_index)
+Build Random Forest model
+Search for optimal tuning parameters and build the model
+In [14]:
+# create grid search dictionary
+param_grid = {"max_features": [x_tr.shape[1] // 10, x_tr.shape[1] // 7, x_tr.shape[1] // 5, x_tr.shape[1] // 3], 
+              "n_estimators": [100, 250, 500]}
+In [15]:
+# setup model building
+m = GridSearchCV(RandomForestClassifier(), param_grid, n_jobs=2, cv=cv, verbose=1)
+In [16]:
+# run model building
+m.fit(x_tr, y_tr)
+Fitting 5 folds for each of 12 candidates, totalling 60 fits
+[Parallel(n_jobs=2)]: Done  46 tasks      | elapsed:   23.6s
+[Parallel(n_jobs=2)]: Done  60 out of  60 | elapsed:   34.2s finished
+In [17]:
+m.best_params_
+In [18]:
+m.best_score_
+In [19]:
+m.cv_results_
+In [20]:
+m.cv_results_['mean_test_score']
+In [21]:
+m.cv_results_['params']
+Save model
+In [22]:
+joblib.dump(m, " C:/Data/data_malaria_rf_morgan.pkl", compress=3)
+Out[23]:
+['C:/Data/data_malaria_rf_morgan.pkl']
+Predict test set compounds
+In [24]:
+# load scale if necessary
+scale = joblib.load("C:/Data/data_malaria_scale.pkl")
+In [25]:
+# scale descriptors of the test set compounds
+x_ts = scale.transform(x_ts)
+In [26]:
+# predict data_malaria class
+pred_rf = m.predict(x_ts)
+In [27]:
+pred_rf
+calc statistics for test set preditions
+In [28]:
+accuracy_score(y_ts, pred_rf)
+In [29]:
+matthews_corrcoef(y_ts, pred_rf)
+In [30]:
+cohen_kappa_score(y_ts, pred_rf)
+applicability domain estimates
+In [31]:
+# if the model includes several ones like RF models or consensus models (or for probabilistic models)
+# we can calculate consistency of predictions amongs those models and use it for estimation of applicability domain
+pred_prob = m.predict_proba(x_ts)
+In [32]:
+# probablity
+pred_prob
+In [33]:
+# setup threshold
+threshold = 0.8
+In [34]:
+# calc maximum predicted probability for each row (compound) and compare to the threshold
+da = np.amax(pred_prob, axis=1) > threshold
+In [35]:
+da
+In [36]:
+# calc statistics
+accuracy_score(np.asarray(y_ts)[da], pred_rf[da])
+In [37]:
+matthews_corrcoef(np.asarray(y_ts)[da], pred_rf[da])
+In [38]:
+cohen_kappa_score(np.asarray(y_ts)[da], pred_rf[da])
+In [39]:
+# calc coverage
+sum(da) / len(da)
+Build SVM model
+In [40]:
+# create grid search dictionary
+param_grid = {"C": [10 ** i for i in range(0, 5)],
+              "gamma": [10 ** i for i in range(-6, 0)]}
+In [41]:
+# setup model building
+svm = GridSearchCV(SVC(kernel='rbf', probability=True), param_grid, n_jobs=2, cv=cv, verbose=1)
+In [42]:
+# run model building
+svm.fit(x_tr, y_tr)
+In [43]:
+svm.best_score_
+In [44]:
+svm.best_params_
+In [45]:
+# save model
+joblib.dump(svm, "C:/Data/data_malaria_svm_morgan.pkl", compress=3)
+In [46]:
+# predict class for the test set compounds
+pred_svm = svm.predict(x_ts)
+In [47]:
+pred_svm
+In [48]:
+# calc statistics
+print("Accuracy = ", accuracy_score(y_ts, pred_svm))
+print("MCC = ", matthews_corrcoef(y_ts, pred_svm))
+print("Kappa = ", cohen_kappa_score(y_ts, pred_svm))
+In [49]:
+# estimate applicability domain and calc stat
+pred_prob = svm.predict_proba(x_ts)
+In [50]:
+da = np.amax(pred_prob, axis=1) > threshold
+In [51]:
+print("Accuracy = ", accuracy_score(np.asarray(y_ts)[da], pred_svm[da]))
+print("MCC = ", matthews_corrcoef(np.asarray(y_ts)[da], pred_svm[da]))
+print("Kappa = ", cohen_kappa_score(np.asarray(y_ts)[da], pred_svm[da]))
+print("Coverage = ", sum(da) / len(da))
+Build the third model (GBM) and compute consensus predictions from RF, and SVM models
+In [52]:
+# setup model building
+param_grid = {"n_estimators": [100, 200, 300, 400, 500]}
+gbm = GridSearchCV(GradientBoostingClassifier(subsample=0.5, max_features=0.5), 
+                   param_grid, n_jobs=2, cv=cv, verbose=1)
+In [53]:
+# run model building
+gbm.fit(x_tr, y_tr)
+Fitting 5 folds for each of 5 candidates, totalling 25 fits
+[Parallel(n_jobs=2)]: Done  25 out of  25 | elapsed:   14.5s finished
+In [54]:
+gbm.best_score_
+In [55]:
+gbm.best_params_
+In [56]:
+pred_gbm = gbm.predict(x_ts)
+In [57]:
+# calc statistics
+print("Accuracy = ", accuracy_score(y_ts, pred_gbm))
+print("MCC = ", matthews_corrcoef(y_ts, pred_gbm))
+print("Kappa = ", cohen_kappa_score(y_ts, pred_gbm))
+consensus model
+In [58]:
+pred_c = 1 * (((pred_rf + pred_svm + pred_gbm) / 3) >= 0.5)
+In [59]:
+pred_c
+In [60]:
+# calc statistics
+print("Accuracy = ", accuracy_score(y_ts, pred_c))
+print("MCC = ", matthews_corrcoef(y_ts, pred_c))
+print("Kappa = ", cohen_kappa_score(y_ts, pred_c))
+Add to Morgan fingerprints some other descriptors and look at the model performance
+In [61]:
+# calc some descriptors
+descr = []
+for m in mols:
+    descr.append([Descriptors.MolLogP(m),
+                  Descriptors.TPSA(m),
+                  Descriptors.NHOHCount(m),
+                  Descriptors.NOCount(m),
+                  Descriptors.NumHAcceptors(m),
+                  Descriptors.NumHDonors(m),
+                  Descriptors.NumRotatableBonds(m),
+                  Descriptors.NumHeteroatoms(m),
+                  Descriptors.FractionCSP3(m)])
+descr = np.asarray(descr)
+In [62]:
+descr.shape
+In [63]:
+# add them to morgan fingerprints
+x = np.concatenate((x, descr), axis=1)
+In [64]:
+x.shape
+In [65]:
+# randomly select 20% of compounds as test set
+x_tr, x_ts, y_tr, y_ts = train_test_split(x, y, test_size=0.20, random_state=seed)
+In [66]:
+# create grid search dictionary
+param_grid = {"max_features": [x_tr.shape[1] // 10, x_tr.shape[1] // 7, x_tr.shape[1] // 5, x_tr.shape[1] // 3], 
+              "n_estimators": [100, 250, 500]}
+In [67]:
+# setup model building
+m = GridSearchCV(RandomForestClassifier(), param_grid, n_jobs=2, cv=cv, verbose=1)
+In [68]:
+# run model building
+m.fit(x_tr, y_tr)
+
+In [69]:
+m.best_score_
+In [70]:
+# predict logBB (activity class) for the test set compounds
+pred = m.predict(x_ts)
+In [71]:
+pred
+In [72]:
+# calc statistics
+print("Accuracy = ", accuracy_score(y_ts, pred))
+print("MCC = ", matthews_corrcoef(y_ts, pred))
+print("Kappa = ", cohen_kappa_score(y_ts, pred))
+In [73]:
+# estimate applicability domain and calc stat
+pred_prob = m.predict_proba(x_ts)
+In [74]:
+da = np.amax(pred_prob, axis=1) > threshold
+In [75]:
+print("Accuracy = ", accuracy_score(np.asarray(y_ts)[da], pred[da]))
+print("MCC = ", matthews_corrcoef(np.asarray(y_ts)[da], pred[da]))
+print("Kappa = ", cohen_kappa_score(np.asarray(y_ts)[da], pred[da]))
+print("Coverage = ", sum(da) / len(da))
+The model has a better accuracy. Added descritors improved the model predictivity.
+Let's try to analyse which variables are the most important in the model¶
+In [76]:
+# rebuild RF model manually using best parameters to be able to extract additional information from the model
+rf = RandomForestClassifier(n_estimators=m.best_params_["n_estimators"], 
+                           max_features=m.best_params_["max_features"],
+                           random_state=seed)
+rf.fit(x_tr, y_tr)
+In [77]:
+imp = rf.feature_importances_
+In [78]:
+imp
+In [79]:
+indices = np.argsort(imp)[::-1]
+
+print("Feature ranking:")
+
+# print top 10 features
+for i in range(10):
+    print("%d. feature %d (%f)" % (i + 1, indices[i], imp[indices[i]]))
+
