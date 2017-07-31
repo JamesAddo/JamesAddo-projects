@@ -1,0 +1,67 @@
+Strategies for In silico Off-Target Safety Assessments and In silico Prediction of Hepatotoxicity
+Strategies for Integration of in silico and in vitro Data for Off-Target Safety Assessments
+Off-target mediated drug toxicity continues to haunt the drug development process. Traditionally, to investigate potential off-target effects, small molecule compounds are evaluated against a screening panel of potential off-targets to determine if they interact with human proteins of interest that are associated with toxicity and side effects, but it is not feasible to screen each compound for all possible off-target interactions. Therefore, to better understand the off-target toxicological effects of a new drug, it is necessary to develop new approaches to overcome these problems. Computational approaches for in silico toxicology determinations, such as  methods to predict potential interactions of candidate small molecule compounds with a panel of human proteins of interest that may have consequence for toxicities, turn into an efficient alternative to potentially screen for off-target activity and enhance the coverage of the in vitro off-target screening campaigns. The use of computational assessments that add value could complement in vitro profiling and may fill gaps in off-target screening that could not be covered routinely with in vitro screening panels.
+
+To tackle the unique challenges of off-target mediated drug toxicity, I have been working on computational models of predicting off-target side effects in the early stages of drug discovery using three parallel strategies. The first strategy described here for predicting off-target proteins uses binding scores obtained from large-scale protein-ligand docking to find ADRs. The second approach uses the Similarity ensemble approach (SEA), devised by Michael Keiser and Brian Shoichet (UCSF School of Pharmacy) and the third approach uses the Off-Target Pipeline, a platform intended to carry out a recently introduced chemical systems biology approach for secondary target identification developed by Bourne et al, University of California, San Diego.
+
+Predicting off-targets and adverse events based on computational screening by automated docking and scoring
+1. VinaLC off-target modeling
+To illustrate a path forward to a comprehensive off-target profiling and to predict off-target effects of  potential drug candidates, the first approach uses molecular docking  scores produced with VinaLC, a parallelized version of AutoDock Vina recently described by researchers at Lawrence Livermore National Laboratory (LLNL). VinaLC enables automated large-scale file preparation, docking, and scoring.
+
+The Lawrence Livermore researchers have subsequently shown in a study that molecular docking may enable reliable, cost-effective, comprehensive, high-throughput screening of a drug candidate for binding across many known targets to provide predictions of clinically important ADRs. Their approach involves Drug-protein target molecular docking calculations using VinaLC and subsequent statistical analysis to build logistic regression models for ADR prediction/applied statistical machine learning approaches to build a predictive computational model for ADR prediction. Briefly, the researchers obtained 409 experimental protein structures from the Protein Data Bank (PDB) to be used as a virtual panel and docked to 906 FDA-approved small molecule compounds using the VinaLC docking code, run on a high-performance computing machine at LLNL. 560 compounds had side effect information in the SIDER database and were used in the subsequent statistical analysis to build logistic regression models for ADR prediction.
+
+We have also established an approach for off-target profiling of candidate drug molecules that uses VinaLC docking approach and uses scores from molecular docking to find off-target proteins that are important for side effects. The potential candidate drugs are computationally screened for their likelihood to bind to 73 targets using VinaLC. The targets belong to the Novartis in vitro safety panels based on their association with ADRs. For each target or the top ranking off-targets following molecular docking, we conducted the more computationally intensive MM/GBSA rescoring to accurately estimate the binding affinity of the ligand to the putative off-targets.
+
+Case Studies: Successful application have been demonstrated for the following:
+1. Potential toxicity and side effects of Ginsenosides
+2. Ocular Toxicity of β-Secretase Inhibitors
+3. Adverse effects of some withdrawn drugs
+(a) hERG blockade: astemizole, cisapride; 
+(b) serotonin 5-HT2B receptor agonism: benfluorex, norfenfluramine; 
+(c) muscarinic M2 receptor antagonism: rapacuronium; 
+4. Off-target predictions for alosetron, methadone, emetine, loperamide (and others)
+
+2. Schrödinger’s Glide off-target models
+Future alternatives for molecular docking and scoring would employ Schrödinger’s Glide docking program and Prime MM-GBSA method for rescoring/Prime MM-GBSA rescoring. 
+
+Methods to systematically predict off-targets, and associate these with side effects, have thus attracted intense interest. It is expected that this off-target profiling approach may have wide application to de-risking toxicological liabilities in drug discovery and prove a useful tool guiding early screening off-target profiling. Certainly, the ability to identify offtarget
+effects in silico before further experimental verification would be invaluable and could potentially reduce the requirement for costly and time-consuming functional assays.
+
+References:
+VinaLC off-target modeling
+
+Toward Fully Automated High Performance Computing Drug Discovery: A Massively Parallel Virtual Screening Pipeline for Docking and Molecular Mechanics/Generalized Born Surface Area Rescoring to Improve Enrichment. Zhang X, Wong S. E., and Lightstone, F. C.
+J. Chem. Inf. Model. 2014, 54, 324−337; dx.doi.org/10.1021/ci4005145 |
+
+LaBute MX, Zhang X, Lenderman J, Bennion BJ, Wong SE, et al. (2014) Adverse Drug Reaction Prediction Using Scores Produced by Large-Scale Drug-Protein Target Docking on High-Performance Computing Machines. PLoS ONE 9(9): e106298. doi:10.1371/journal.pone.0106298
+
+Similarity ensemble approach (SEA)
+Keiser MJ, Setola V, Irwin JJ, Laggner C, Abbas AI, et al. 2009. Predicting new molecular targets for known drugs. Nature 462:175–81
+
+Off-Target Pipeline
+Evangelidis, T., Bourne, P.E., Xie, L., Xie, L.
+An integrated workflow for proteome-wide off-target identification and polypharmacology drug design. (2012) Proceedings - 2012 IEEE International Conference on Bioinformatics and Biomedicine Workshops, BIBMW 2012 PP. 32 -39. doi: 10.1109/BIBMW.2012.6470348
+
+Xie, L., Evangelidis, T., Xie, L., Bourne, P.E. Drug discovery using chemical systems biology: Weak inhibition of multiple kinases may contribute to the anti-cancer effect of nelfinavir
+(2011) PLoS Computational Biology 7 (4) doi: 10.1371/journal.pcbi.1002037
+
+In silico Prediction of Hepatotoxicity
+Background: Extensive efforts are made to assess hepatotoxicity risk in drug discovery. However, Drug Induced Liver Injury (DILI) remains a major adverse event leading to termination of drug development programs and regulatory actions. 
+
+Methods: Three publicly available data sets composed of annotated DILI-positive or DILI-negative properties of compounds were used in this work. The data sets were (1) a data set from the U.S. FDA’s National Center for Toxicological Research (called the NCTR data set);1, 2 (2) a data set from Greene et al. (called the Greene data set);3 and (3) a data set from Xu et al. (called the Xu data set). A combined data set (called the combined data set) was constructed. It was a combination (with duplication and annotation consistency check) of the NCTR, Greene, and Xu data sets. The data set consisted of training (475 drugs) and external validation data set (198 drugs). Models were developed based on the training set and predictive performance of the models was checked from both the training data set and the external validation data set.
+
+Classifiers were built using six machine learning algorithms: Naive Bayes (NB), support vector machines (SVM), random forests, and k-nearest neighbors (KNN). Classifiers of hepatotoxicity were built using PaDEL descriptors and RDKits Morgan Fingerprints. Predictive performance was evaluated using 10-fold cross-validation testing and the commonly used parameters for evaluating the performance of classification models: overall accuracy, sensitivity, specificity, and area under the receiver operator characteristic curve, (AUC).
+
+R (version 3.41) and Python programming language (version 2.7) using the scikit-learn package (version 0.14.1) were used for machine learning.
+
+Results: In this study, DILI prediction models are being developed using machine learning Quantitative Structure-Activity Relationships (QSAR) classification models, trained on 475 drugs and an external validation set of 198 drugs. The model shows good early performance and resulted in models with 80 to 83 % of training set and 73 to 76% of the test set correctly predicted. A great improvement in the classification performance could be achieved by descriptor-machine learning method combinations as this research proceeds further.
+
+
+Conclusion: Overall, it is expected that our new QSAR models might improve the decision making skills of pharmaceutical scientists to mitigate hepatoxicity liability during the drug discovery process. The strong early performance of the machine learning QSAR models on the training and test set provides preliminary evidence that such approaches can be fully integrated within the early safety assessments for DILI in the drug discovery programs. Future work will include use of eTOX in vivo hepatotoxicity data for the development of new in silico tools for the prediction of DILI.
+
+References:
+
+(1) Chen, M.; Hong, H.; Fang, H.; Kelly, R.; Zhou, G.; Borlak, J.; Tong, W. Quantitative Structure-Activity Relationship Models for Predicting Drug-Induced Liver Injury Based on FDA-Approved Drug Labeling Annotation and Using a Large Collection of Drugs. Toxicol. Sci. 2013, 136, 242.
+(2) Chen, M.; Vijay, V.; Shi, Q.; Liu, Z.; Fang, H.; Tong, W. FDAApproved Drug Labeling for the Study of Drug-Induced Liver Injury. Drug Discovery Today 2011, 16, 697−703.
+(3) Greene, N.; Fisk, L.; Naven, R. T.; Note, R. R.; Patel, M. L.; Pelletier, D. J. Developing Structure- Activity Relationships for the Prediction of Hepatotoxicity. Chem. Res. Toxicol. 2010, 23, 1215−1222.
+(4) Xu, J. J.; Henstock, P. V.; Dunn, M. C.; Smith, A. R.; Chabot, J. R.; de Graaf, D. Cellular Imaging Predictions of Clinical Drug-Induced Liver Injury. Toxicol. Sci. 2008, 105, 97−105.
