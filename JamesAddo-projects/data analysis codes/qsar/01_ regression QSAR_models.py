@@ -82,7 +82,7 @@ for k,v in testmols_dic.items():
     test_acts_array = np.array(test_acts)
   
 # make predictions for test compounds
-test_SVMpredictions = rf.predict(test_fps_array)
+test_RF_predictions = rf.predict(test_fps_array)
 
 # cross-validate
 scores = cross_validation.cross_val_score(rf, fps_array, acts_array, cv=5)
