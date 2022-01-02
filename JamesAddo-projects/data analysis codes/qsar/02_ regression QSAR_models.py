@@ -51,7 +51,7 @@ acts_array   = np.array(acts)
 
 fps_train,fps_test,act_train,act_test = cross_validation.train_test_split(fps_array, acts_array ,test_size=.4,random_state=randomseedcounter)
 
-    rf = RandomForestClassifier(n_estimators=100, max_depth=10, min_samples_split=2, min_samples_leaf=1)
+    rf = RandomForestRegressor(n_estimators=100, max_depth=10, min_samples_split=2, min_samples_leaf=1)
     rf.fit(fps_train, act_train)
     # write the model
     cPickle.dump(rf, outfile, 2)
@@ -59,7 +59,7 @@ fps_train,fps_test,act_train,act_test = cross_validation.train_test_split(fps_ar
 outfile.close()
 print "done"
 # make predictions for test compounds
-test_SVMpredictions = rf.predict(fps_test)
+test_RF_predictions = rf.predict(fps_test)
 
 # cross-validate
 scores = cross_validation.cross_val_score(rf, fps_train, act_train, cv=5)
