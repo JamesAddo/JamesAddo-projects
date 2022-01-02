@@ -101,18 +101,18 @@ for k,v in testmols_dic.items():
     test_fps.append(arr)
 
 # make predictions for test compounds
-test_SVMpredictions = rf.predict(test_fps)
+test_RF_predictions = rf.predict(test_fps)
 
 # output confusion matrix and percentage accuracy on test sets    
-    print metrics.confusionmatrix(test_mols_act_label, test_SVMpredictions) 
+    print metrics.confusionmatrix(test_mols_act_label, test_RF_predictions) 
     accuracy = rf.score(test_fps, test_mols_act_label)
            print accuracy 
 
 # calculate probabilities for each test molecules
-test_SVMprobabilities = rf.predict_proba(test_fps)
+test_RF_probabilities = rf.predict_proba(test_fps)
 
 # compute AUC metric for this CV fold
-        fpr, tpr, thresholds = metrics.roc_curve(test_mols_act_label, test_SVMprobabilities)
+        fpr, tpr, thresholds = metrics.roc_curve(test_mols_act_label, test_RF_probabilities)
         roc_auc = metrics.auc(fpr, tpr)
         print "AUC (fold %d/%d): %f" % (i + 1, n, roc_auc)
         mean_auc += roc_auc
