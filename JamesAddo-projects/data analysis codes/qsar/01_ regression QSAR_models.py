@@ -55,7 +55,7 @@ print "morgan2 generated:", len(fps)
 acts_array = np.array(acts)
 fps_array   = np.array(fps)
 
-    rf = RandomForestClassifier(n_estimators=100, max_depth=10, min_samples_split=2, min_samples_leaf=1)
+    rf = RandomForestRegressor(n_estimators=100, max_depth=10, min_samples_split=2, min_samples_leaf=1)
     rf.fit(acts_array, fps_array)
     # write the model
     cPickle.dump(rf, outfile, 2)
