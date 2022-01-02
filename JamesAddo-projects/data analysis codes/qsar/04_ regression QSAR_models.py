@@ -40,7 +40,7 @@ print "morgan2 generated:", len(fps)
 fps_scipy = [dict([(str(k),v) for (k,v) in fp.GetNonzeroElements().items()]) for fp in fps]
 dv = DictVectorizer().fit(fps_scipy)
             ys_fit.append((mols_dic[k])
-    rf = RandomForestClassifier(n_estimators=100, max_depth=10, min_samples_split=2, min_samples_leaf=1)
+    rf = RandomForestRegressor(n_estimators=100, max_depth=10, min_samples_split=2, min_samples_leaf=1)
     rf.fit(fps, ys_fit)
     # write the model
     cPickle.dump(rf, outfile, 2)
